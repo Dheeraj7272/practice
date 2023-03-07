@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Navbar</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			background-color: #f1f1f1;
+		}
+		nav{
+			background-color: #333;
+			color: #fff;
+			height: 60px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 50px;
+		}
+		nav h2{
+			margin: 0;
+			padding: 0;
+			font-size: 24px;
+			font-weight: normal;
+			letter-spacing: 2px;
+		}
+		nav ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			align-items: center;
+		}
+		nav ul li a{
+			color: #fff;
+			text-decoration: none;
+			margin-left: 30px;
+			transition: all 0.3s ease 0s;
+		}
+		nav ul li a:hover{
+			color: #f9b034;
+		}
+		.hamburger{
+			display: none;
+			cursor: pointer;
+		}
+		.bar{
+			display: block;
+			width: 25px;
+			height: 3px;
+			background-color: #fff;
+			margin: 5px 0;
+			transition: all 0.3s ease 0s;
+		}
+		@media (max-width: 768px){
+			nav{
+				padding: 0 20px;
+			}
+			nav h2{
+				font-size: 20px;
+			}
+			nav ul{
+				position: fixed;
+				top: 60px;
+				left: 0;
+				background-color: #333;
+				height: 0;
+				width: 100%;
+				overflow: hidden;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				transition: all 0.3s ease 0s;
+			}
+			nav ul.show{
+				height: 100vh;
+			}
+			.hamburger{
+				display: block;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<h2>Logo</h2>
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+		<div class="hamburger">
+			<span class="bar"></span>
+			<span class="bar"></span>
+			<span class="bar"></span>
+		</div>
+	</nav>
+
+	<script type="text/javascript">
+		const hamburger = document.querySelector(".hamburger");
+		const navLinks = document.querySelector("nav ul");
+		const links = document.querySelectorAll("nav ul li a");
+
+		hamburger.addEventListener("click", () => {
+			navLinks.classList.toggle("show");
+			links.forEach(link => {
+				link.classList.toggle("fade");
+			});
+		});
+	</script>
+</body>
+</html>
